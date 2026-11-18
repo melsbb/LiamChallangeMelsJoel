@@ -5,8 +5,12 @@ body {
     height: 100vh;
     margin: 0;
     overflow: hidden;
-    background: #1f2d43;
-    color: #edf2fb;
+    background:
+        radial-gradient(circle at 90% 22%, rgba(22, 104, 255, 0.10), transparent 21%),
+        linear-gradient(135deg, rgba(255,255,255,0.012) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.012) 50%, rgba(255,255,255,0.012) 75%, transparent 75%);
+    background-color: #1f2d43;
+    background-size: auto, 10px 10px;
+    color: #e8edf7;
     font-family: "Segoe UI", Arial, sans-serif;
 }
 
@@ -14,7 +18,8 @@ body {
     width: 252px;
     height: 100%;
     padding: 24px 16px 24px 31px;
-    border-right: 1px solid #29364a;
+    background: rgba(23, 33, 50, 0.34);
+    border-right: 1px solid rgba(129, 151, 184, 0.08);
 }
 
 .sidebar-nav {
