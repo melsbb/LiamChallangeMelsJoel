@@ -67,18 +67,13 @@
     </aside>
 </body>
 <script>
-    document.querySelectorAll('.nav-item').forEach(function (item) {
-        item.addEventListener('click', function (event) {
-            event.preventDefault();
-
-            document.querySelectorAll('.nav-item').forEach(function (navItem) {
-                navItem.classList.remove('active');
-                navItem.removeAttribute('aria-current');
-            });
-
-            item.classList.add('active');
-            item.setAttribute('aria-current', 'page');
-        });
-    });
+document.querySelectorAll('.nav-item').forEach(item => {
+    item.onclick = event => {
+        event.preventDefault();
+        document.querySelectorAll('.nav-item').forEach(nav =>
+            nav.classList.remove('active'));
+        item.classList.add('active');
+    };
+});
 </script>
 </html>
