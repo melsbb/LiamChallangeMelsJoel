@@ -81,7 +81,7 @@ require __DIR__ . '/../includes/header.php';
 ?>
         <div class="page-content form-page">
             <section class="form-panel">
-                <h2><?= escape_html($game['name']) aanpassen</h2>
+                <h2><?= escape_html($game['name']) ?> aanpassen</h2>
                 <p class="form-intro">Pas de gegevens aan en sla je wijzigingen op.</p>
                 <?php foreach ($errors as $error): ?>
                     <p class="notice notice-error" role="alert"><?= escape_html($error) ?></p>

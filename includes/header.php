@@ -6,7 +6,7 @@ $navigation = [
     ['label' => 'Speelt nu', 'status' => 'Speelt nu', 'icon' => 'fa-solid fa-play'],
     ['label' => 'Uitgespeeld', 'status' => 'Uitgespeeld', 'icon' => 'fa-solid fa-circle-check'],
 ];
-$activeStatus = $activeStatus ?? null;
+$activeStatus = isset($activeStatus) && $activeStatus !== '' ? $activeStatus : null;
 $createUrl = $createUrl ?? 'games/create.php';
 ?>
 <!DOCTYPE html>
@@ -45,5 +45,12 @@ $createUrl = $createUrl ?? 'games/create.php';
     <main class="main-content">
         <header class="page-header">
             <h1><?= escape_html($pageTitle) ?></h1>
+            <?php if (!empty($showViewActions)): ?>
+                <div class="view-actions" aria-label="Weergaveopties">
+                    <button type="button" data-view="list" aria-label="Lijstweergave" aria-pressed="false"><i class="fa-solid fa-list" aria-hidden="true"></i></button>
+                    <button type="button" class="active" data-view="grid" aria-label="Rasterweergave" aria-pressed="true"><i class="fa-solid fa-table-cells" aria-hidden="true"></i></button>
+                    <button type="button" data-view="large" aria-label="Grote rasterweergave" aria-pressed="false"><i class="fa-solid fa-th" aria-hidden="true"></i></button>
+                </div>
+            <?php endif; ?>
             <a class="add-game-link" href="<?= escape_html($createUrl) ?>"><i class="fa-solid fa-plus" aria-hidden="true"></i> Game toevoegen</a>
         </header>

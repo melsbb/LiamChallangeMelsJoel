@@ -49,14 +49,14 @@ foreach ([
         $conditions[] = "{$field} = :{$field}";
         $parameters[$field] = $field === 'rating' ? (int) $value : $value;
     }
-    if ($activeStatus !== '') {
-        $conditions[] = 'status = :nav_status';
-        $parameters['nav_status'] = $activeStatus;
-    }
-    if ($statusFilter !== '') {
-        $conditions[] = 'status = :status_filter';
-        $parameters['status_filter'] = $statusFilter;
-    }
+}
+if ($activeStatus !== '') {
+    $conditions[] = 'status = :nav_status';
+    $parameters['nav_status'] = $activeStatus;
+}
+if ($statusFilter !== '') {
+    $conditions[] = 'status = :status_filter';
+    $parameters['status_filter'] = $statusFilter;
 }
 if ($search !== '') {
     $conditions[] = 'name LIKE :search';
@@ -73,6 +73,7 @@ $statement->execute($parameters);
 $games = $statement->fetchAll();
 
 $pageTitle = $activeStatus !== '' ? $activeStatus : 'All Games';
+$showViewActions = true;
 $homeUrl = 'index.php';
 $createUrl = 'games/create.php';
 $cssPath = 'css/style.css';
@@ -108,7 +109,7 @@ require __DIR__ . '/includes/header.php';
                     <?php endforeach; ?>
                 </select>
                 <label class="sr-only" for="filter-status">Status</label>
-                <select id="filter-status" name="status">
+                <select id="filter-status" name="status_filter">
                     <option value="">All Statuses</option>
                     <?php foreach (GAME_STATUSES as $option): ?>
                         <option value="<?= escape_html($option) ?>"<?= $statusFilter === $option ? ' selected' : '' ?>><?= escape_html($option) ?></option>
@@ -128,7 +129,7 @@ require __DIR__ . '/includes/header.php';
                 <span class="game-total"><?= count($games) ?> <?= count($games) === 1 ? 'game' : 'games' ?></span>
             </form>
 
-            <section class="game-grid" aria-label="Gamebibliotheek">
+            <section class="game-grid" aria-label="Gamebibliotheek" data-view="grid">
                 <?php if ($games === []): ?>
                     <p class="empty-state">Geen games gevonden. Pas je filters aan of voeg een game toe.</p>
                 <?php endif; ?>
