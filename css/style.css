@@ -1,6 +1,7 @@
 * { box-sizing: border-box; }
 
 body {
+    display: flex;
     min-width: 900px;
     height: 100vh;
     margin: 0;
@@ -80,4 +81,211 @@ body {
     color: #aeb8c8;
     font-size: 12px;
     text-align: right;
+}
+
+.main-content {
+    min-width: 0;
+    flex: 1;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.page-header {
+    height: 49px;
+    display: flex;
+    align-items: center;
+    padding: 0 22px 0 25px;
+    border-bottom: 1px solid rgba(129, 151, 184, 0.10);
+}
+
+.page-header h1 {
+    margin: 0;
+    font-size: 20px;
+    line-height: 49px;
+}
+
+.view-actions {
+    display: flex;
+    gap: 5px;
+    margin-left: auto;
+}
+
+.view-actions button,
+.filter-bar button {
+    border: 0;
+    color: #cbd5e7;
+    background: #26364d;
+    cursor: pointer;
+}
+
+.view-actions button {
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+}
+
+.view-actions button.active {
+    color: #fff;
+    background: #735ce1;
+}
+
+.filter-bar {
+    height: 55px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 20px 0 25px;
+    border-bottom: 1px solid rgba(129, 151, 184, 0.08);
+}
+
+.filter-bar select {
+    height: 38px;
+    width: 160px;
+    padding: 0 10px;
+    border: 0;
+    border-radius: 4px;
+    color: #eef3fa;
+    background: #26364d;
+}
+
+.filter-bar button {
+    height: 38px;
+    border-radius: 4px;
+}
+
+.star-button,
+.search-button,
+.sort-button {
+    width: 38px;
+}
+
+.star-button {
+    margin-left: 0;
+}
+
+.game-total {
+    margin-left: auto;
+    color: #b7c1d2;
+    font-size: 12px;
+}
+
+.reset-button {
+    padding: 0 10px;
+    font-size: 12px;
+}
+
+.game-grid {
+    height: calc(100vh - 104px);
+    display: grid;
+    grid-template-columns: repeat(4, minmax(230px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.game-card {
+    height: 160px;
+    min-width: 0;
+    display: grid;
+    grid-template-columns: 105px minmax(0, 1fr);
+    gap: 10px;
+    padding: 0 0 0 0;
+    border-radius: 6px;
+    background: rgba(45, 60, 84, 0.42);
+}
+
+.cover {
+    width: 105px;
+    height: 160px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border-radius: 6px;
+    text-align: center;
+    box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.22);
+}
+
+.cover i {
+    font-size: 38px;
+    filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.35));
+}
+
+.cover strong {
+    max-width: 92px;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.55);
+}
+
+.cover-minecraft { background: linear-gradient(150deg, #7dbb50, #3b572d); color: #fff; }
+.cover-gta { background: linear-gradient(150deg, #63c6aa, #242d37); color: #f6edb8; }
+.cover-fortnite { background: linear-gradient(150deg, #b04df1, #202caa); color: #fff; }
+.cover-rdr { background: linear-gradient(150deg, #b44838, #242c32); color: #f1e1c6; }
+.cover-cod { background: linear-gradient(150deg, #778b91, #20272b); color: #e8ecef; }
+.cover-ac { background: linear-gradient(150deg, #b9aa75, #24485b); color: #fff5d6; }
+.cover-resynced { background: linear-gradient(150deg, #2a8da9, #44327e); color: #dffaff; }
+
+.game-info {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 9px 8px 8px 0;
+}
+
+.game-info h2 {
+    margin: 0 0 3px;
+    overflow: hidden;
+    color: #f1f5fb;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 18px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.game-info p,
+.game-info time {
+    margin: 0;
+    overflow: hidden;
+    color: #9baac1;
+    font-size: 11px;
+    line-height: 16px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.game-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    height: 43px;
+    margin-top: auto;
+    border: 1px solid rgba(151, 171, 201, 0.10);
+    border-radius: 4px;
+}
+
+.game-stats span {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-right: 1px solid rgba(151, 171, 201, 0.10);
+    color: #9baac1;
+    font-size: 10px;
+    text-align: center;
+}
+
+.game-stats span:last-child {
+    border-right: 0;
+}
+
+.game-stats b {
+    color: #67b4a1;
+    font-size: 12px;
+}
+
+@media (max-width: 1250px) {
+    .game-grid {
+        grid-template-columns: repeat(3, minmax(230px, 1fr));
+    }
 }
